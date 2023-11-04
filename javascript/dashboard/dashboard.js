@@ -19,7 +19,7 @@ const getCookie = (cname) => {
       return c.substring(name.length, c.length);
     }
   }
-  // return "";
+  return "";
   window.location.href = "/login.html";
 };
 
