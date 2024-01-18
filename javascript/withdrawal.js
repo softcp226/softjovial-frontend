@@ -25,6 +25,8 @@ const handle_withdrawal = async (form) => {
     document.querySelector("#submit").innerHTML = "proccessing...";
     const response = await fetch(
       "https://softjovial-backend.glitch.me/api/user/withdraw",
+      // "http://localhost:5000/api/user/withdraw",
+
       {
         method: "POST",
         headers: { "content-type": "application/json" },

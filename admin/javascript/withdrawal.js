@@ -24,8 +24,39 @@ function getCookie(cname) {
   window.location.replace("/admin");
 }
 
-//
+const handle_approve_withdrawal = async (btn, withdrawal_request) => {
+  btn.innerHTML = "Proccessing...";
+  let token = getCookie("admin_token");
+  let admin = getCookie("admin");
+  try {
+    const response = await fetch(
+      "https://softjovial-backend.glitch.me/api/admin/withdrawal/fetch/withdrawal/approval",
+      // "http://localhost:5000/api/admin/withdrawal/fetch/withdrawal/approval",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ token, admin, withdrawal_request }),
+      },
+    );
+    const result = await response.json();
+    console.log(result);
+    if (result.error) {
+      btn.innerHTML = "Try again";
+      document.querySelector(".errMessage").innerHTML = result.errMessage;
+      alert(result.errMessage);
+    } else {
+      alert(result.message);
+      btn.innerHTML = "Success";
+      window.location.href = "/admin/withdrawal.html";
+    }
+  } catch (err) {
+    btn.innerHTML = "Try again";
+    console.log(err);
+    alert(err.message);
+  }
+};
 
+//
 const handle_delete_withdrawal = async (btn, withdrawal_request) => {
   btn.innerHTML = "Proccessing...";
   let token = getCookie("admin_token");
@@ -57,6 +88,7 @@ const handle_delete_withdrawal = async (btn, withdrawal_request) => {
   }
 };
 
+
 const createAndAppendElement = (element) => {
   const section = document.createElement("section");
   const date = document.createElement("h4");
@@ -65,6 +97,7 @@ const createAndAppendElement = (element) => {
   const amount = document.createElement("h4");
   const method = document.createElement("h4");
   const wallet = document.createElement("h4");
+  const approveBTN = document.createElement("button");
   const delBTn = document.createElement("button");
   date.innerHTML = element.transaction_date;
   withdrawer.innerHTML = element.user
@@ -80,6 +113,15 @@ const createAndAppendElement = (element) => {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.0`;
   method.innerHTML = element.withdrawal_method;
   wallet.innerHTML = element.wallet;
+
+  approveBTN.innerHTML=element.is_approved ? "Approved" : "Approve";
+approveBTN.className=element.is_approved ? "btn btn-secondary":"btn btn-primary"
+approveBTN.onclick=()=>{
+  element.is_approved? alert("Withdrawal Approved") : handle_approve_withdrawal(approveBTN, element._id)
+}
+
+
+  // approveBTN.className="btn btn-primary"
   delBTn.innerHTML = "DELETE";
   delBTn.className = "btn btn-danger";
   delBTn.onclick = () => handle_delete_withdrawal(delBTn, element._id);
@@ -118,6 +160,7 @@ const createAndAppendElement = (element) => {
     amount,
     method,
     wallet,
+    approveBTN,
     delBTn
   );
   document.querySelector(".history-table").append(section);

@@ -53,7 +53,7 @@ const display_address = (selectedOption, wallet_container, data) => {
       document.querySelector("#wallet_address").style.display = "inline-block";
       document.querySelector(
         "#wallet_note",
-      ).innerHTML = `Open your Crypto.com App,copy and send ${data.currency}${data.deposit_amount} worth of ${data.payment_method}  to the wallet above`;
+      ).innerHTML = `copy and send ${data.currency}${data.deposit_amount} worth of ${data.payment_method}  to the wallet above`;
       // } else {
       //   //   document.querySelector("#qr_code").style.display = "none";
       //   //   document.querySelector("#wallet_address").style.display = "inline-block";

@@ -1,3 +1,24 @@
+const getCookie = (cname) => {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+  // window.location.href = "/login.html";
+};
+
+
+
+
+
 function setCookie(user, token) {
   // alert("called")
   console.log(user);
@@ -13,8 +34,11 @@ function setCookie(user, token) {
   //   navigate = param[0];
   // }
   // if (navigate) return window.location.replace(navigate);
-  window.location.replace("/dashboard.html");
+  // window.location.replace("/dashboard.html");
 }
+
+
+
 
 function setCookie_01(user, token) {
   // alert("called")
@@ -56,7 +80,10 @@ const loginUser = async (email, password) => {
     }
     document.querySelector("#login").innerHTML = "success";
     setCookie(result.message.user, result.token);
-    window.location.replace("/dashboard.html");
+    result.message.account_type =='real_account' ?window.location.replace("/dashboard.html"):window.location.replace("/demo")
+    // let demo=getCookie("demo")
+    // demo == 'true' ? window.location.replace("/demo"): window.location.replace("/dashboard.html")
+
   } catch (err) {
     document.querySelector(".errMessage").innerHTML = err.message;
     document.querySelector("#login").innerHTML = "try again";

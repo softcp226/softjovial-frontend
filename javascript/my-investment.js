@@ -28,9 +28,11 @@ let handle_cancel_investment = async (button, investment) => {
   try {
     button.innerHTML = "proccessing...";
     const response = await fetch(
-      // "http://localhost:5000/api/user/investment/cancel",
+    
 
-      "https://softjovial-backend.glitch.me/api/user/investment/cancel",
+        // "http://localhost:5000/api/user/investment/cancel",
+
+        "https://softjovial-backend.glitch.me/api/user/investment/cancel",
       {
         method: "POST",
         headers: { "content-type": "application/json" },

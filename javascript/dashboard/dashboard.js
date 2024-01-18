@@ -48,6 +48,8 @@ const getCookie = (cname) => {
         if(result.error){
   alert(result.errMessage)
         }else{
+          result.message.last_login =='demo_account' ?window.location.replace("/demo"):""
+
 setText(result.message)
         }
     } catch (error) {

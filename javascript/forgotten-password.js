@@ -5,6 +5,7 @@ const fetch_recover_password = async (email) => {
   try {
     const response = await fetch(
       "https://softjovial-backend.glitch.me/api/password/forgotten",
+      // "http://localhost:5000/api/password/forgotten",
       {
         method: "POST",
         headers: { "content-type": "application/json" },
