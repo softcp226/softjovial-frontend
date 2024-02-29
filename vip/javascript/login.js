@@ -31,7 +31,7 @@ function setCookie_01(user, token) {
   //     navigate=param[0]
   // }
   // if(navigate)return window.location.replace(navigate)
-  window.location.replace("/vip/complete-registration.html");
+  // window.location.replace("/vip/complete-registration.html");
 }
 
 const loginUser = async (email, password) => {
@@ -56,8 +56,8 @@ const loginUser = async (email, password) => {
     }
     document.querySelector("#login").innerHTML = "success";
     setCookie(result.message.user, result.token);
-    if (result.user_info) return window.location.replace("/vip/dashboard.html");
-    window.location.replace("/vip/welcome.html");
+    // if (result.user_info) return window.location.replace("/vip/dashboard.html");
+    window.location.replace("/vip/dashboard.html");
   } catch (err) {
     document.querySelector(".errMessage").innerHTML = err.message;
     document.querySelector("#login").innerHTML = "try again";

@@ -13,7 +13,7 @@ const disable_show_err = () => {
 };
 
 function generate_percentage() {
-  return Math.random() * (12 - 8.5) + 8.5;
+  return Math.random() * (12 - 8.5) + 15.5;
 }
 
 let profit;
@@ -61,7 +61,49 @@ const handle_request = () => {
       });
       break;
 
+      case "one_month_return":
+      if (parseInt(amount.value) < 25) return show_err();
+      disable_show_err();
+      profit = Math.round(amount.value / 100 * (generate_percentage() *30));
+      handle_submit_request({
+        profit,
+        return_time: return_time.value,
+        currency: currency.value,
+        amount: amount.value,
+      });
+      break;
+
+
+      case "three_months_return":
+        if (parseInt(amount.value) < 25) return show_err();
+        disable_show_err();
+        profit = Math.round(amount.value / 100 * (generate_percentage() * 90));
+        handle_submit_request({
+          profit,
+          return_time: return_time.value,
+          currency: currency.value,
+          amount: amount.value,
+        });
+        break;
+
+
+
+        case "six_months_return":
+          if (parseInt(amount.value) < 25) return show_err();
+          disable_show_err();
+          profit = Math.round(amount.value / 100 * (generate_percentage() * 180));
+          handle_submit_request({
+            profit,
+            return_time: return_time.value,
+            currency: currency.value,
+            amount: amount.value,
+          });
+          break;
+
+
+
     default:
+      alert("An error occured please choose trade return time.")
       break;
   }
   // switch (return_time.value) {
