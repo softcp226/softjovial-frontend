@@ -55,15 +55,15 @@ function setCookie_01(user, token) {
   //     navigate=param[0]
   // }
   // if(navigate)return window.location.replace(navigate)
-  window.location.replace("/joint_account/complete-registration.html");
+  window.location.replace("/joint_account");
 }
 
 const loginUser = async (primary_email,primary_password,secondary_password) => {
   try {
     document.querySelector("#login").innerHTML = "proccessing...";
     const response = await fetch(
-      // "https://softjovial-backend.glitch.me/api/user/login",
-      "http://localhost:5000/api/user/login",
+     "https://softjovial-joint-account-backend.glitch.me/api/user/login",
+      // "http://localhost:5000/api/user/login",
 
       {
         method: "POST",
@@ -80,7 +80,7 @@ const loginUser = async (primary_email,primary_password,secondary_password) => {
     }
     document.querySelector("#login").innerHTML = "success";
     setCookie(result.message.user, result.token);
-    result.message.account_type =='real_account' ?window.location.replace("/joint_account/dashboard.html"):window.location.replace("/joint_account/demo")
+    result.message.account_type =='real_account' ?window.location.replace("/joint_account"):window.location.replace("/joint_account/demo")
     // let demo=getCookie("demo")
     // demo == 'true' ? window.location.replace("/demo"): window.location.replace("/dashboard.html")
 
@@ -103,8 +103,8 @@ const registerUser = async (primary_email,secondary_email,primary_phone_number,s
   try {
     document.querySelector("#next").innerHTML = "proccessing...";
     const response = await fetch(
-      // "https://softjovial-backend.glitch.me/api/newuser/register",
-      "http://localhost:5000/api/newuser/register",
+      "https://softjovial-joint-account-backend.glitch.me/api/newuser/register",
+      // "http://localhost:5000/api/newuser/register",
 
       {
         method: "POST",

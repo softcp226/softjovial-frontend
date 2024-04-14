@@ -1,8 +1,8 @@
 const show_err = (txt) => (txt.style.color = "red");
-const first_name_txt = document.querySelector("#first_name_txt");
-const last_name_txt=document.querySelector("#last_name_txt")
-const email_txt = document.querySelector("#email_txt");
-const phone_number_txt = document.querySelector("#phone_number_txt");
+const primary_full_name_txt = document.querySelector("#primary_full_name_txt");
+const secondary_full_name_txt=document.querySelector("#secondary_full_name_txt")
+const primary_phone_number_txt = document.querySelector("#primary_phone_number_txt");
+const secondary_phone_number_txt = document.querySelector("#secondary_phone_number_txt");
 
 const update_user = async (userInformation) => {
   
@@ -11,7 +11,7 @@ const update_user = async (userInformation) => {
 
     const response = await fetch(
       // "http://localhost:5000/api/user/updateprofileInfo", 
-    "https://softjovial-backend.glitch.me/api/user/updateprofileInfo",
+    "https://softjovial-joint-account-backend.glitch.me/api/user/updateprofileInfo",
     {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -33,32 +33,32 @@ const update_user = async (userInformation) => {
 
 document.querySelector("#saveuserBtn").onclick = () => {
   event.preventDefault();
-  const first_name = document.querySelector("#first_name");
-  const last_name= document.querySelector("#last_name");
-  const email = document.querySelector("#email");
-  const phone_number = document.querySelector("#phone_number");
+  const primary_full_name = document.querySelector("#primary_full_name");
+  const secondary_full_name= document.querySelector("#secondary_full_name");
+  const primary_phone_number = document.querySelector("#primary_phone_number");
+  const secondary_phone_number = document.querySelector("#secondary_phone_number");
 
-  if (!first_name.value) return show_err(first_name_txt);
-  if (!last_name.value) return show_err(last_name_txt);
-  if (!email.value) return show_err(email_txt);
-  if (!phone_number.value) return show_err(phone_number_txt);
+  if (!primary_full_name.value) return show_err(primary_full_name_txt);
+  if (!secondary_full_name.value) return show_err(secondary_full_name_txt);
+  if (!primary_phone_number.value) return show_err(primary_phone_number_txt);
+  if (!secondary_phone_number.value) return show_err(secondary_phone_number_txt);
 
   update_user({
     user: getCookie("user"),
     token: getCookie("token"),
-    first_name:first_name.value,
-    last_name: last_name.value,
-    email: email.value,
-    phone_number: phone_number.value,
+    primary_full_name:primary_full_name.value,
+    secondary_full_name: secondary_full_name.value,
+    primary_phone_number: primary_phone_number.value,
+    secondary_phone_number: secondary_phone_number.value,
   });
 };
 
 document.querySelectorAll("input").forEach((input) => {
   input.onkeyup = () => {
-     first_name_txt.style.color = "#263238";
-    last_name_txt.style.color = "#263238";
-    email_txt.style.color = "#263238";
-    phone_number_txt.style.color = "#263238";
+     primary_full_name_txt.style.color = "#263238";
+    secondary_full_name_txt.style.color = "#263238";
+    primary_phone_number_txt.style.color = "#263238";
+    secondary_phone_number_txt.style.color = "#263238";
   };
 });
 
@@ -66,14 +66,14 @@ const handle_user_result = (result) => {
   console.log(result);
   // document.querySelector("#my_profile").src =
   //   result.user_icon || "assets/images/photo.png";
-  // document.querySelector("#first_name").innerHTML = result.full_name;
-  // document.querySelector("#my_email").innerHTML = result.email;
+  // document.querySelector("#primary_full_name").innerHTML = result.full_name;
+  // document.querySelector("#my_primary_phone_number").innerHTML = result.primary_phone_number;
 
-  document.querySelector("#first_name").value = result.first_name;
-  document.querySelector("#last_name").value = result.last_name;
+  document.querySelector("#primary_full_name").value = result.primary_full_name;
+  document.querySelector("#secondary_full_name").value = result.secondary_full_name;
 
-  document.querySelector("#email").value = result.email;
-  document.querySelector("#phone_number").value = result.phone_number || "";
+  document.querySelector("#primary_phone_number").value = result.primary_phone_number;
+  document.querySelector("#secondary_phone_number").value = result.secondary_phone_number || "";
 };
 
 (async () => {
@@ -83,7 +83,7 @@ const handle_user_result = (result) => {
     const response = await fetch(
       //   "/api/users/myaccount",
       // "http://localhost:5000/api/user/find",
-      "https://softjovial-backend.glitch.me/api/user/find",
+      "https://softjovial-joint-account-backend.glitch.me/api/user/find",
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -94,7 +94,7 @@ const handle_user_result = (result) => {
     // user_result = result.message;
     console.log(result);
     if (result.error) {
-      //   document.querySelector(".email_message").innerHTML = "";
+      //   document.querySelector(".primary_phone_number_message").innerHTML = "";
       //   errMessage_container.innerHTML = result.errMessage;
       //   errMessage_container.style.display = "block";
 
@@ -104,8 +104,8 @@ const handle_user_result = (result) => {
       // container_fluid.style.textAlign = "center";
       // container_fluid.innerHTML = result.errMessage;
     } else {
-      //   document.querySelector("#email").href = `mailto:${result.message.email}`;
-      //   document.querySelector("#email").innerHTML = `${result.message.email}`;
+      //   document.querySelector("#primary_phone_number").href = `mailto:${result.message.primary_phone_number}`;
+      //   document.querySelector("#primary_phone_number").innerHTML = `${result.message.primary_phone_number}`;
       //   // alert(result.message.account_is_verified);
       //   if (result.message.account_is_verified == true) {
       //     const d = new Date();
