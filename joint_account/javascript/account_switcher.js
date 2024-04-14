@@ -35,6 +35,10 @@ const switch_account = async () => {
       console.log(result);
      
       if(result.error)return alert(result.errMessage)
+
+      document.cookie = "user=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "is_active=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
       window.location.replace("/demo")
  
   

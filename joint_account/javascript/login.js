@@ -55,7 +55,7 @@ function setCookie_01(user, token) {
   //     navigate=param[0]
   // }
   // if(navigate)return window.location.replace(navigate)
-  window.location.replace("/joint_account");
+  window.location.replace("/joint_account/complete-registration.html");
 }
 
 const loginUser = async (primary_email,primary_password,secondary_password) => {
@@ -80,7 +80,7 @@ const loginUser = async (primary_email,primary_password,secondary_password) => {
     }
     document.querySelector("#login").innerHTML = "success";
     setCookie(result.message.user, result.token);
-    result.message.account_type =='real_account' ?window.location.replace("/joint_account"):window.location.replace("/joint_account/demo")
+    result.message.account_type =='real_account' ?window.location.replace("/joint_account"):window.location.replace("/demo")
     // let demo=getCookie("demo")
     // demo == 'true' ? window.location.replace("/demo"): window.location.replace("/dashboard.html")
 
