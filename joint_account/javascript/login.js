@@ -27,7 +27,7 @@ function setCookie(user, token) {
   let expires = "expires=" + d.toUTCString();
   // document.cookie=`email=${email} ; ${expires}`
   document.cookie = `user=${user} ; ${expires}`;
-  document.cookie = `token=${token} ; ${expires}`;
+  // document.cookie = `token=${token} ; ${expires}`;
   // let navigate;
   // const params = new URLSearchParams(window.location.search);
   // for (const param of params) {
@@ -80,7 +80,7 @@ const loginUser = async (primary_email,primary_password,secondary_password) => {
     }
     document.querySelector("#login").innerHTML = "success";
     setCookie(result.message.user, result.token);
-    result.message.account_type =='real_account' ?window.location.replace("/joint_account"):window.location.replace("/demo")
+    window.location.replace("/joint_account/verify_login_code.html")
     // let demo=getCookie("demo")
     // demo == 'true' ? window.location.replace("/demo"): window.location.replace("/dashboard.html")
 

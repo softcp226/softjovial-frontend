@@ -7,8 +7,7 @@
   <title>Joint Account Login Form</title>
   <meta name="description" content="Trade Forex on the World Leading Financial Platform on the Web" />
   <meta name="keywords" content="Trade Forex on the World Leading Financial Platform on the Web" />
-
-
+  <script src="javascript/check_account_status.js"></script>
 
 </head>
 <body>
@@ -27,13 +26,12 @@
         <p class="errMessage" style="
               color: red;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              font-weight: 500;
-            "></p>
+              font-weight: 500;" ></p>
 
-        <input type="password" placeholder="Primary Email Code" id="primary_pass" />
-        <input type="password" placeholder="Secondary Email Code" id="secondary_pass" />
+        <input type="number" placeholder="Primary Email Code" id="primary_email_code" />
+        <input type="number" placeholder="Secondary Email Code" id="secondary_email_code" />
         <a id="resend_code">Resend Codes</a>
-        <button class="signIn" id="login">Sign In</button>
+        <button class="signIn" id="verify_login">Verify Login</button>
         <!-- <a href="forgotten-password.html">Forgotten password</a> -->
       </form>
     </div>
@@ -60,7 +58,7 @@
 
 
 
-  <script src="javascript/login.js"></script>
+  <script src="javascript/verify_login_code.js"></script>
   <!-- <script src="javascript/register.js"></script> -->
   <script src="//code.tidio.co/s8v59wvf1lxmhg4lgcwsox6q8zyka74q.js" async></script>
 </body>
