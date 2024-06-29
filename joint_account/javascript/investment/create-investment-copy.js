@@ -12,9 +12,9 @@ const disable_show_err = () => {
   document.querySelector(".errMessage").innerHTML = "";
 };
 
-function generate_percentage() {
-  return Math.random() * (12 - 8.5) + 8.5;
-}
+// function generate_percentage() {
+//   return Math.random() * (12 - 8.5) + 8.5;
+// }
 
 let profit;
 
@@ -25,10 +25,10 @@ const handle_request = () => {
   if (!currency.value) return;
   if (!return_time.value) return;
   switch (return_time.value) {
-    case "daily_return":
+    case "2_weeks_return":
       if (parseInt(amount.value) < 25) return show_err();
       disable_show_err();
-      profit = Math.round(amount.value / 100 * generate_percentage());
+      profit = Math.round(amount.value / 100 * 6);
       handle_submit_request({
         profit,
         return_time: return_time.value,
@@ -37,10 +37,10 @@ const handle_request = () => {
       });
       break;
 
-    case "4_days_return":
+    case "one_month_return":
       if (parseInt(amount.value) < 25) return show_err();
       disable_show_err();
-      profit = Math.round(amount.value / 100 * (generate_percentage()*4));
+      profit = Math.round(amount.value / 100 * 12);
       handle_submit_request({
         profit,
         return_time: return_time.value,
@@ -49,10 +49,10 @@ const handle_request = () => {
       });
       break;
 
-    case "weekly_return":
+    case "two_months_return":
       if (parseInt(amount.value) < 25) return show_err();
       disable_show_err();
-      profit = Math.round(amount.value / 100 * (generate_percentage() *7));
+      profit = Math.round(amount.value / 100 * 20);
       handle_submit_request({
         profit,
         return_time: return_time.value,
@@ -60,6 +60,32 @@ const handle_request = () => {
         amount: amount.value,
       });
       break;
+
+      case "three_months_return":
+      if (parseInt(amount.value) < 25) return show_err();
+      disable_show_err();
+      profit = Math.round(amount.value / 100 * 23);
+      handle_submit_request({
+        profit,
+        return_time: return_time.value,
+        currency: currency.value,
+        amount: amount.value,
+      });
+      break;
+
+
+      case "six_months_return":
+        if (parseInt(amount.value) < 25) return show_err();
+        disable_show_err();
+        profit = Math.round(amount.value / 100 * 25);
+        handle_submit_request({
+          profit,
+          return_time: return_time.value,
+          currency: currency.value,
+          amount: amount.value,
+        });
+        break;
+
 
     default:
       break;
