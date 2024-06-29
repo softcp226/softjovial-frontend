@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     document.querySelector("#successImg").style.display = "none";
 
-    window.location.replace("dashboard.html");
+    window.location.replace("/joint_account/dashboard.html");
   }, 1700);
 });
