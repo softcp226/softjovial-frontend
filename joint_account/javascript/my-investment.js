@@ -119,7 +119,7 @@ const createAndAppendElement = (element) => {
   //     : element.status == "pending"
   //     ? (SSH4.className = "status-pending")
   //     : (SSH4.className = "status-success");
-  section.append(TDH4, REFH4, AMTH4, RTH4, EPH4, AN);
+  section.append(TDH4, REFH4, AMTH4, RTH4, EPH4);
   document.querySelector(".history-table").append(section);
 
   // set_percentage();
