@@ -12,7 +12,7 @@ const checkCookie = (cname) => {
     }
   }
   // return "";
-  window.location.href = "/login.html";
+  window.location.href = "login.html";
 };
 
 let withdrawal_amount = document.querySelector("#amount");
@@ -56,7 +56,7 @@ const handle_withdrawal = async (form) => {
     // }
 
     document.querySelector("#submit").innerHTML = "success";
-    window.location.href = `/action/loading.html?${result.message}`;
+    window.location.href = `action/loading.html?${result.message}`;
   } catch (err) {
     // document.querySelector("#centerd_phrase").className = "center-none";
     document.querySelector(".errMessage").innerHTML = err.message;
