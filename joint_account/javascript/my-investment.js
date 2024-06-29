@@ -97,9 +97,9 @@ const createAndAppendElement = (element) => {
   EPH4.innerHTML = `$${element.pending_profit.toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.0`;;
     EPH4.style.color="green"
-  AN.innerHTML = "Cancel";
-  AN.className = "status-fail";
-  AN.onclick = () => handle_cancel_investment(AN, element._id);
+  // AN.innerHTML = "Cancel";
+  // AN.className = "status-fail";
+  // AN.onclick = () => handle_cancel_investment(AN, element._id);
   //   IVP.innerHTML = element.investment_plan;
   //   PT_LS.innerHTML = "+$3.30";
   //()=>{
