@@ -59,7 +59,8 @@ const handle_delete_user = async (event, user_id) => {
 
 const createAndAppendElement = (element) => {
   const section = document.createElement("section");
-  const E_M = document.createElement("h4");
+  const br=document.createElement("br")
+  const E_M = document.createElement("a");
   const final_balance = document.createElement("h4");
   const P_L = document.createElement("h4");
   const AI = document.createElement("h4");
@@ -67,7 +68,10 @@ const createAndAppendElement = (element) => {
   const CCBTN = document.createElement("button");
   const DCBTN = document.createElement("button");
   const RIBTN = document.createElement("button");
-  E_M.innerHTML = `${element.email} || ${element.phone_number}`;
+  E_M.innerHTML = `${element.email}|| ${ element.phone_number}`
+  E_M.ondblclick=()=>window.location.href=`addbill.html?${element._id}`
+  // E_M.append(br, element.phone_number)
+  // || ${element.phone_number}`;
   final_balance.innerHTML = `$${element.final_balance
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;

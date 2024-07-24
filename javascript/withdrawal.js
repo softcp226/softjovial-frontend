@@ -131,6 +131,8 @@ document.querySelectorAll("textarea").forEach((input) => {
 
 document.querySelectorAll("select").forEach((select) => {
   select.onchange = () => {
+    // alert("")
     select.style.border = "2px solid #fff";
+    document.querySelector(".errMessage").innerHTML = "";
   };
 });

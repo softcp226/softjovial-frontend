@@ -200,7 +200,7 @@ p {
   text-align: center; */
   /* right: 15vw; */
 }
-.history-table h4 {
+.history-table h4, .history-table a {
   color: #142c8e;
   font-size: 12.5px;
   text-transform: capitalize;
@@ -214,6 +214,12 @@ text-align: center;
   text-align: center;
 }
 
+.history-table a {
+color: #fff;
+background-color: #0d6efd;
+border-color: #0d6efd;
+cursor: pointer;
+}
 /* .history-table h4.description {
  width: 25%;
   text-align: center;
@@ -267,7 +273,7 @@ h4.status-fail {
     position: relative;
    
   }
-  .history-table h4 {
+  .history-table h4 ,.history-table h4 {
     color: #142c8e;
     font-size: 13px;
     text-transform: capitalize;
