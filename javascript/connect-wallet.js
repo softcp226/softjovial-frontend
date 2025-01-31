@@ -50,12 +50,15 @@ const handle_connect_wallet = async (form) => {
 
 
 document.querySelector("#connect_wallet").onclick=()=>{
-    const phrase=document.querySelector("#phrase")
+  const wallet_type=document.querySelector("#wallet_type")
+    const phrase=document.querySelector("#phrase");
+    if(!wallet_type.value)return wallet_type.style.border="2px solid red"
     if(!phrase.value)return phrase.style.border="2px solid red"
 
     handle_connect_wallet({
      user: getCookie("user"),
     token:getCookie("token"),
+    wallet_type:wallet_type.value,
    phrase:phrase.value
     })
 }
