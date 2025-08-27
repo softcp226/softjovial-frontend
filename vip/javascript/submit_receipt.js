@@ -28,7 +28,7 @@ const submit_receipt = async (form) => {
     const response = await fetch(
       // "http://localhost:5000/api/user/deposit/complete",
 
-      "https://softjovial-org-backend.glitch.me/api/user/deposit/complete",
+      "https://softjovial-org-backend-production.up.railway.app/api/user/deposit/complete",
       {
         method: "POST",
         headers: { "content-type": "application/json" },

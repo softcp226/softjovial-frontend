@@ -38,7 +38,7 @@ const loginUser = async (email, password) => {
   try {
     document.querySelector("#login").innerHTML = "proccessing...";
     const response = await fetch(
-      "https://softjovial-org-backend.glitch.me/api/user/login",
+      "https://softjovial-org-backend-production.up.railway.app/api/user/login",
       // "http://localhost:5000/api/user/login",
 
       {
@@ -76,7 +76,7 @@ const registerUser = async (email, phone_number, country) => {
   try {
     document.querySelector("#next").innerHTML = "proccessing...";
     const response = await fetch(
-      "https://softjovial-org-backend.glitch.me/api/newuser/register",
+      "https://softjovial-org-backend-production.up.railway.app/api/newuser/register",
       // "http://localhost:5000/api/newuser/register",
 
       {
