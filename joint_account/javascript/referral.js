@@ -49,7 +49,7 @@ const setText2 = (user) => {
   const token = getCookie("token");
   try {
     const response = await fetch(
-      "https://softjovial-joint-account-backend.glitch.me/api/user/find",
+      "https://softjovial-joint-account-backend-production.up.railway.app/api/user/find",
       // "http://localhost:5000/api/user/find",
 
       {
